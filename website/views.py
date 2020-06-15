@@ -123,3 +123,7 @@ def cv_view(request):
 
 def view_404(request, exception):
     return render(request, 'html/status_code/404.html', status=404)
+
+
+def view_500(request):
+    return render(request, 'html/status_code/500.html', status=500)

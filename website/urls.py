@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
-from django.conf.urls import handler404
+from django.conf.urls import handler404, handler500
 from django.conf.urls.static import static
 
 from website.views import about_view, experience_view, education_view, skill_view, certification_view, cv_view, \
-    dossier_view, project_view#, view_404
+    dossier_view, project_view, view_404, view_500
 
-handler404 = 'website.views.view_404'
-
+handler404 = view_404
+handler500 = view_500
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', about_view, name='about'),
@@ -19,5 +19,6 @@ urlpatterns = [
                   path('dossier/', dossier_view, name='dossier'),
                   path('certification/', certification_view, name='certification'),
                   path('cv/', cv_view, name='curriculum'),
+                    path('error', view_500),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
