@@ -1,61 +1,35 @@
 {% extends 'html/index.html' %}
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
-        <div class="my-auto">
-          <h2 class="mb-5">Experiência</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-              <div class="resume-content mr-auto">
-                <h3 class="mb-0">Responsável pela Seccção de IT do Hackathon Think Twice</h3>
-                <div class="subheading mb-3">Departamento de Eletrónica Telecomunicações e Informática da Universidade de Aveiro</div>
-                <p>Elaboração da página promocional do evento, criação de uma rede de internet
-                  sem restrições baseada na Eduroam, manutenção e montagem do servidor dedicado ao evento.
-                  <a href="https://thinktwice.web.ua.pt" target="_blank"><p>Página promocional do evento</p></a>
-                </p>
-              </div>
-              <div class="resume-date text-md-right">
-                <span class="text-primary">Setembro 2018 - Fevereiro 2019</span>
-              </div>
-            </div>
+{% block headers %}
+    <title>Projects</title>
+    {% load static %}
+{% endblock %}
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Web Developer</h3>
-              <div class="subheading mb-3">Departamento de Eletrónica Telecomunicações e Informática da Universidade de Aveiro</div>
-              <p>Promoção do curso de Licenciatura em Engenharia Informática e
-                Mestrado Integrado em Engenharia Eletrónica e Telecomunicações.
-                Os sites podem ser consultados em:
-                  <a href="http://deti-cdn.clients.ua.pt/lei/" target="_blank"><p>Website - Engenharia Informática</p></a>
-                  <a href="http://deti-cdn.clients.ua.pt/mieet/" target="_blank"><p>Website - Engenharia Eletrónica e Telecomunicações</p></a>
-                </p>
+{% block content %}
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
+        <div class="container">
+            <div class="row">
+                <h2 class="mb-5">Experience</h2>
             </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Julho 2018 - Julho 2018</span>
-            </div>
-          </div>
+            <div class="row">
+                {% for experience in experiences %}
+                    <div class="col-md-6 col-sm-6 portfolio-item">
+                            {% if project.image %}
+                                <img class="img-fluid" src="{{ experience.image.url }}" alt="">
+                            {% else %}
+                                <img class="img-fluid" src="{% static '/img/samuel-pereira-unsplash.jpg' %}"
+                                     alt="">
+                            {% endif %}
+                            <div class="portfolio-caption">
+                                <h3 class="mb-0">{{ experience.title }}</h3>
+                                <div class="mb-3">{{ experience.sub_title }}</div>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Membro do Conselho do Departamento</h3>
-              <div class="subheading mb-3">Departamento de Eletrónica Telecomunicações e Informática da Universidade de Aveiro</div>
-              <p>Análise e emissão de pareceres sobre todo o funcionamento do Departamento de Eletrónica Telecomunicações
-                e Informática da Universidade de Aveiro bem como auxiliação nas medidas de gestão impostas.</p>
+                            <p>{{ experience.description }}</p>
+                            <span class="text-primary">{{ experience.begin_date_month_year }} - {{ experience.end_date_month_year }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Junho 2018 - Junho 2020</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Responsável Financeiro</h3>
-              <div class="subheading mb-3">Núcleo de Estudantes de Informática - Associação Académica da Universidade de Aveiro</div>
-              <p>Gestão de todos os fundos do Núcleo de Estudantes de Informática bem como a coordenação da equipa associada ao mesmo núcleo.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Janeiro 2018 - Janeiro 2019</span>
-            </div>
-          </div>
-
         </div>
-      </section>
-
+    </section>
+{% endblock %}

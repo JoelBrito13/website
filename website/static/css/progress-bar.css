@@ -1,0 +1,46 @@
+.container-bar {
+    width: 60%;
+
+}
+
+.li-bar {
+    position: relative;
+    list-style: none;
+    margin: 50px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.li-bar:before {
+    content: "";
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: #F5DEB3;
+    border-radius: 1000px;
+}
+
+.li-bar:after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 0%;
+    height: 15px;
+    background-color: #BD5D38;
+    border-radius: 1000px;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+.li-bar.animated:after {
+    animation-name: new_width;
+}
+
+@keyframes new_width {
+    to{
+        width: var(--my-percentage-var);
+    }
+}

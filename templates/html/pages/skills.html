@@ -1,64 +1,29 @@
 {% extends 'html/index.html' %}
 
-   <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-        <div class="my-auto">
-          <h2 class="mb-5">Skills</h2>
+{% block headers %}
+    <title>Skills</title>
+    {% load static %}
+    <link href="{% static '/css/progress-bar.css' %}" rel="stylesheet">
+{% endblock headers %}
 
-          <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-          <ul class="list-inline list-icons">
-            <li class="list-inline-item">
-              <i class="devicons devicons-html5"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-css3"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-javascript"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-jquery"></i>
-            </li>
-              <li class="list-inline-item">
-              <i class="devicons devicons-bootstrap"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-java"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-python"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-mysql"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-vim"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-visualstudio"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-linux"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-git"></i>
-            </li>
-          </ul>
+{% block content %}
 
-          <div class="subheading mb-3">Workflow</div>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum</li>
-          </ul>
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
+        <div class="container">
+            <div class="row">
+                <div class="my-auto">
+                    <h2 class="mb-5">Skill</h2>
+                </div>
+            </div>
+            <div class="container-bar">
+                <ul>
+                    {% for skill in skills %}
+                        <li class="li-bar animated"
+                            style="--my-percentage-var: {{ skill.percentage }}%"> {{ skill.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-      </section>
+    </section>
 
+{% endblock content %}

@@ -19,6 +19,7 @@ urlpatterns = [
                   path('dossier/', dossier_view, name='dossier'),
                   path('certification/', certification_view, name='certification'),
                   path('cv/', cv_view, name='curriculum'),
-                    path('error', view_500),
+                  path('404/', view_404),
+                  path('500/', view_500),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

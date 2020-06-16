@@ -7,6 +7,6 @@ db.sqlite3
 debug.log
 info.log
 #personal info
-website/static/img/*
-website/static/icon/*
+website/static/img/profile.jpg
+website/static/icon/
 website/media/*

@@ -2,198 +2,42 @@
 
 {% block headers %}
     <title>Projects</title>
-{% endblock%}
+    {% load static %}
+{% endblock %}
 
 {% block content %}
-<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
         <div class="container">
-          <div class="row">
-            <div class="mb-5">
-              <h2 class="section-heading text-uppercase">Projetos</h2>
-              <h3 class="section-subheading text-muted">Projetos pessoais e colaborações</h3>
+            <div class="row">
+                <h2 class="mb-5">Projects</h2>
             </div>
-          </div>
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-md-6 col-sm-6 portfolio-item">
+                        <a class="portfolio-link" href="{{ project.link }}">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            {% if project.image %}
+                                <img class="img-fluid" src="{{ project.image.url }}" alt="">
+                            {% else %}
+                                <img class="img-fluid" src="{% static '/img/marvin-meyer-unsplash.jpg' %}"
+                                     alt="">
+                            {% endif %}
+                        </a>
+                            <div class="portfolio-caption">
+                                <h3 class="mb-0">{{ project.title }}</h3>
+                                <div class="mb-3">{{ project.sub_title }}</div>
 
-          <div class="row">
-              <!--Website NEI-->
-              <div class="col-md-6 col-sm-6 portfolio-item">
-                  <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                    <div class="portfolio-hover">
-                      <div class="portfolio-hover-content">
-                        <i class="fa fa-plus fa-3x"></i>
-                      </div>
-                    </div>
-                    <img class="img-fluid" src="static/img/projects/03-thumbnail.png" alt="">
-                  </a>
-                  <div class="portfolio-caption">
-                    <h4>Website NEI </h4>
-                     <p class="text-muted">Colaboração no desenvolvimento do Website do Núcleo de Estudantes de Informática</p>
-                  </div>
-                </div>
-                <!--Website Think Twice-->
-                <div class="col-md-6 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                      <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                          <i class="fa fa-plus fa-3x"></i>
+                            <p>{{ project.description }}</p>
+                            <span class="text-primary">{{ project.begin_date_month_year }} - {{ project.end_date_month_year }}</span>
                         </div>
-                      </div>
-                      <img class="img-fluid" src="static/img/projects/04-thumbnail.png" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                      <h4>Website Think Twice </h4>
-                      <p class="text-muted">Main developer no website do Hackathon Think Twice</p>
                     </div>
-                  </div>
+                {% endfor %}
             </div>
-
-          <div class="row">
-            <div class="col-md-6 col-sm-6 portfolio-item">
-              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                <div class="portfolio-hover">
-                  <div class="portfolio-hover-content">
-                    <i class="fa fa-plus fa-3x"></i>
-                  </div>
-                </div>
-                <img class="img-fluid" src="static/img/projects/01-thumbnail.png" alt="">
-              </a>
-              <div class="portfolio-caption">
-                <h4>Página de Promoção</h4>
-                <p class="text-muted">Colaboração no desenvolvimento da Página de Promoção do MIEET</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6 portfolio-item">
-              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                <div class="portfolio-hover">
-                  <div class="portfolio-hover-content">
-                    <i class="fa fa-plus fa-3x"></i>
-                  </div>
-                </div>
-                <img class="img-fluid" src="static/img/projects/02-thumbnail.png" alt="">
-              </a>
-              <div class="portfolio-caption">
-                <h4>Página de Promoção</h4>
-                <p class="text-muted">Main developer na Página de Promoção da LEI</p>
-              </div>
-            </div>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-    <!-- Modal -->
-
-    <!-- Modal 1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Página de Promoção do MIEET</h2>
-                  <p class="item-intro text-muted">Collaborator</p>
-                  <p>Colaboração no desenvolvimento na página de promoção do Mestrado em Engenharia
-                      Eletrónica e Telecomunicações da Universidade de Aveiro.
-                    </p>
-                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="http://deti-cdn.clients.ua.pt/mieet/">Ver website</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal 2 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Página de Promoção da LEI</h2>
-                  <p class="item-intro text-muted">Main developer</p>
-                  <p>Main developer da página de promoção da Licenciatura em Engenharia Informática da Universidade de Aveiro.
-                    </p>
-                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="http://deti-cdn.clients.ua.pt/lei/">Ver website</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Modal 3 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-              <div class="lr">
-                <div class="rl"></div>
-              </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8 mx-auto">
-                  <div class="modal-body">
-                    <!-- Project Details Go Here -->
-                    <h2 class="text-uppercase">Website NEI</h2>
-                    <p class="item-intro text-muted">Colaborador</p>
-                    <p>Colaboração no desenvolvimento do website do
-                        Núcleo de Estudantes de Informática da
-                        Associação Académica da Universidade de Aveiro.
-                      </p>
-                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="https://nei.web.ua.pt">Ver website</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal 4-->
-      <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-              <div class="lr">
-                <div class="rl"></div>
-              </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8 mx-auto">
-                  <div class="modal-body">
-                    <!-- Project Details Go Here -->
-                    <h2 class="text-uppercase">Website ThinkTwice</h2>
-                    <p class="item-intro text-muted">Main Developer</p>
-                    <p>Main developer do website Think Twice, hackathon
-                        fruto de uma parceria entre o Núcleo de Estudantes
-                        de Informática e o IEEE SB UA.
-                      </p>
-                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="https://thinktwice.web.ua.pt">Ver website</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 {% endblock %}
