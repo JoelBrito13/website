@@ -46,7 +46,7 @@ class DateBase(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return self.title
+        return f'{self.id} - {self.title}'
 
     @property
     def date_month_year(self):
@@ -69,7 +69,7 @@ class About(models.Model):
 
 
 class CV(models.Model):
-    curriculum = models.FileField()
+    curriculum = models.FileField(upload_to='cv/')
 
 
 class Skills(Base):
@@ -98,12 +98,12 @@ class Experience(DateBaseMonthYear):
 
 class Certification(DateBase):
     institution = models.CharField(max_length=50, null=False)
-    file = models.FileField()
+    file = models.FileField(upload_to='certificates/')
 
 
 class Award(DateBase):
     institution = models.CharField(max_length=50, blank=True, null=True)
-    link = models.FileField()
+    file = models.FileField('awards/')
 
 
 class Dossier(DateBase):

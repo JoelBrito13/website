@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 import logging
 
-from website.models import About, Experience, Education, Skills, Certification, Dossier, CV, Project
+from website.models import About, Experience, Education, Skills, Certification, Dossier, CV, Project, Award
 
 logging.config.dictConfig({
     'version': 1,
@@ -97,10 +97,12 @@ def skill_view(request):
 
 def certification_view(request):
     certifications = Certification.objects.all()
+    awards = Award.objects.all()
     tparms = {
-        'certifications': certifications
+        'certifications': certifications,
+        'awards': awards
     }
-    logger.info(certifications)
+    logger.info(tparms)
     return render(request, 'html/pages/certificates.html', tparms)
 
 
@@ -111,6 +113,26 @@ def dossier_view(request):
     }
     logger.info(dossiers)
     return render(request, 'html/pages/dossier.html', tparms)
+
+
+def award_file_view(request, id):
+    award = Award.objects.get(id=id)
+    logger.info(award)
+    wrapper = FileWrapper(award.file)
+    response = HttpResponse(wrapper, content_type='application/pdf')
+    return response
+
+
+def certificate_file_view(request, id):
+    print('\n\n\n\n', id)
+
+    certificate = Certification.objects.get(id=id)
+
+    print('\n\n\n\n', certificate)
+    logger.info(certificate)
+    wrapper = FileWrapper(certificate.file)
+    response = HttpResponse(wrapper, content_type='application/pdf')
+    return response
 
 
 def cv_view(request):
