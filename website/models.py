@@ -20,7 +20,7 @@ class Base(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return self.title
+        return f'{self.id} - {self.title}'
 
 
 class DateBaseMonthYear(models.Model):
@@ -33,7 +33,7 @@ class DateBaseMonthYear(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return self.title
+        return f'{self.id} - {self.title}'
 
     @property
     def begin_date_month_year(self):
@@ -91,7 +91,7 @@ class SkillCategory(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return self.name
+        return f'{self.order} - {self.name}'
 
 
 class Skill(Base):
