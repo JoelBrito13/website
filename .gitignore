@@ -6,6 +6,5 @@ db.sqlite3
 debug.log
 info.log
 #personal info
-website/migrations/
 google-credentials.json
 
