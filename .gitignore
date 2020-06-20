@@ -7,4 +7,5 @@ debug.log
 info.log
 #personal info
 website/migrations/
+credentials.json
 
