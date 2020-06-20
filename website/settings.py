@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gdstorage',
     'website'
 ]
 
@@ -138,8 +139,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'website/static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'website/media')
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'credentials.json')
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'website/media'
+CACHE_DISCOVERY = False
+
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'website/media')
 
 
 # Configure Django App for Heroku.

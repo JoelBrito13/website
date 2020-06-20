@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from wsgiref.util import FileWrapper
 from django.http import HttpResponse
-
 import logging
 
-from website.models import About, Experience, Education, Skills, Certification, Dossier, CV, Project, Award
+from website.models import About, Experience, Education, Skill, Certification, Dossier, CV, Project, Award, \
+    SkillCategory
 
 logging.config.dictConfig({
     'version': 1,
@@ -48,6 +48,8 @@ logging.config.dictConfig({
 })
 logger = logging.getLogger(__name__)
 
+logging.getLogger('googleapicliet.discovery_cache').setLevel(logging.ERROR)
+
 
 def about_view(request):
     about = About.objects.all().last()
@@ -78,20 +80,27 @@ def project_view(request):
 
 
 def education_view(request):
-    education = Education.objects.all()
+    educations = Education.objects.all()
     tparms = {
-        'educations': education
+        'educations': educations
     }
-    logger.info(education)
+    logger.info(educations)
     return render(request, 'html/pages/education.html', tparms)
 
 
 def skill_view(request):
-    skills = Skills.objects.all()
+    skills = Skill.objects.all()
+    skill_categories = SkillCategory.objects.all()
+    categories = {}
+    for category in skill_categories:
+        categories[category.name] = []
+    for item in skills:
+        categories[item.category.name].append(item)
     tparms = {
-        'skills': skills
+
+        'categories': categories
     }
-    logger.info(skills)
+    logger.info(categories)
     return render(request, 'html/pages/skills.html', tparms)
 
 
@@ -118,29 +127,58 @@ def dossier_view(request):
 def award_file_view(request, id):
     award = Award.objects.get(id=id)
     logger.info(award)
-    wrapper = FileWrapper(award.file)
-    response = HttpResponse(wrapper, content_type='application/pdf')
-    return response
+    if award.file:
+        try:
+            tparms = {
+                'title': 'Curriculum',
+                'file': award
+            }
+            return render(request, 'html/pages/pdf_display.html', tparms)
+        except TypeError:
+            pass
+    tparms = {
+        'title': 'Award',
+        'message': 'Award not found'
+    }
+    return render(request, 'html/pages/no-content.html', tparms)
 
 
 def certificate_file_view(request, id):
-    print('\n\n\n\n', id)
-
     certificate = Certification.objects.get(id=id)
-
-    print('\n\n\n\n', certificate)
     logger.info(certificate)
-    wrapper = FileWrapper(certificate.file)
-    response = HttpResponse(wrapper, content_type='application/pdf')
-    return response
+    if certificate.file:
+        try:
+            tparms = {
+                'title': 'Certificate',
+                'file': certificate
+            }
+            return render(request, 'html/pages/pdf_display.html', tparms)
+        except TypeError:
+            pass
+    tparms = {
+        'title': 'Certification',
+        'message': 'Certification not found'
+    }
+    return render(request, 'html/pages/no-content.html', tparms)
 
 
 def cv_view(request):
     cv = CV.objects.all().last()
     logger.info('Sending CV')
-    wrapper = FileWrapper(cv.curriculum)
-    response = HttpResponse(wrapper, content_type='application/pdf')
-    return response
+    if cv and cv.curriculum:
+        try:
+            tparms = {
+                'title': 'Curriculum',
+                'file': cv
+            }
+            return render(request, 'html/pages/pdf_display.html', tparms)
+        except TypeError:
+            pass
+    tparms = {
+        'title': 'Curriculum',
+        'message': 'Curriculum not found'
+    }
+    return render(request, 'html/pages/no-content.html', tparms)
 
 
 def view_404(request, exception):

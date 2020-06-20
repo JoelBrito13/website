@@ -1,10 +1,16 @@
+import base64
+
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, URLValidator, EmailValidator
+from gdstorage.storage import GoogleDriveStorage
 
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
 """
         Base Session
 """
 DATE_FORMAT_RETURN = "%B, %Y"
+
 
 class Base(models.Model):
     title = models.CharField(max_length=50, null=False)
@@ -12,6 +18,7 @@ class Base(models.Model):
 
     class Meta:
         ordering = ['order', ]
+
     def __str__(self):
         return self.title
 
@@ -69,45 +76,70 @@ class About(models.Model):
 
 
 class CV(models.Model):
-    curriculum = models.FileField(upload_to='cv/')
+    curriculum = models.FileField(upload_to='cv', storage=gd_storage)
+
+    @property
+    def pdf_drive_share(self):
+        return self.curriculum.url.replace("download", "sharing")
 
 
-class Skills(Base):
+class SkillCategory(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    order = models.IntegerField()
+
+    class Meta:
+        ordering = ['order', ]
+
+    def __str__(self):
+        return self.name
+
+
+class Skill(Base):
     percentage = models.IntegerField(null=False, validators=[MaxValueValidator(100), MinValueValidator(0)])
+    category = models.ForeignKey(SkillCategory, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['category', 'order']
 
 
 class Education(DateBaseMonthYear):
     institution = models.CharField(max_length=50, null=False)
     institution_link = models.CharField(max_length=150, validators=[URLValidator], blank=True, null=True)
     city = models.CharField(max_length=50, null=False)
-    image = models.ImageField(upload_to='institutions/', blank=True, null=True)
+    image = models.ImageField(upload_to='institution', blank=True, null=True, storage=gd_storage)
 
 
 class Project(DateBaseMonthYear):
     sub_title = models.CharField(max_length=200)
     description = models.CharField(max_length=1000)
-    image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    image = models.ImageField(upload_to='projects', blank=True, null=True, storage=gd_storage)
     link = models.CharField(max_length=150, validators=[URLValidator], blank=True, null=True)
 
 
 class Experience(DateBaseMonthYear):
     sub_title = models.CharField(max_length=200)
     description = models.CharField(max_length=1000)
-    image = models.ImageField(upload_to='events/', blank=True, null=True)
+    image = models.ImageField(upload_to='events', blank=True, null=True, storage=gd_storage)
 
 
 class Certification(DateBase):
     institution = models.CharField(max_length=50, null=False)
-    file = models.FileField(upload_to='certificates/')
+    file = models.FileField(upload_to='certificates', storage=gd_storage)
+
+    @property
+    def pdf_drive_share(self):
+        return self.file.url.replace("download", "sharing")
 
 
 class Award(DateBase):
     institution = models.CharField(max_length=50, blank=True, null=True)
-    file = models.FileField('awards/')
+    file = models.FileField(upload_to='awards', storage=gd_storage)
+
+    @property
+    def pdf_drive_share(self):
+        return self.file.url.replace("download", "sharing")
 
 
 class Dossier(DateBase):
     institution = models.CharField(max_length=50, blank=True, null=True)
-    image = models.ImageField(upload_to='dossier/')
-
-
+    image = models.ImageField(upload_to='dossier', storage=gd_storage)

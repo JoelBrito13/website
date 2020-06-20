@@ -24,7 +24,7 @@ urlpatterns = [
                   path('404/', view_404),
                   path('500/', view_500),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
-              + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+             # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # change Django admin title
 admin.site.site_title = 'My Website Administration'

@@ -1,0 +1,13 @@
+{% extends 'html/index.html' %}
+{% block headers %}
+    <title>{{ title }}</title>
+{% endblock headers %}
+
+{% block content %}
+
+    <div class="pdfdisplay">
+        <iframe src="{{ file.pdf_drive_share }}" type="application/pdf">
+        </iframe>
+    </div>
+
+{% endblock content %}

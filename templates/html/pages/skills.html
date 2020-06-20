@@ -17,9 +17,13 @@
             </div>
             <div class="container-bar">
                 <ul>
-                    {% for skill in skills %}
-                        <li class="li-bar animated"
-                            style="--my-percentage-var: {{ skill.percentage }}%"> {{ skill.title }}</li>
+                    {% for category, skills in categories.items %}
+                        <h3 class="mb-5">{{ category }}</h3>
+                        {% for skill in skills %}
+                            <li class="li-bar animated"
+                                style="--my-percentage-var: {{ skill.percentage }}%"> {{ skill.title }}
+                            </li>
+                        {% endfor %}
                     {% endfor %}
                 </ul>
             </div>

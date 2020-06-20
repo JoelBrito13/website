@@ -1,0 +1,19 @@
+{% extends 'html/index.html' %}
+
+{% block headers %}
+    <title>{{ title }}</title>
+    {% load static %}
+    <link href="{% static 'css/no-content.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <div class="-square-o col-md-9 ">
+        <h1>404 Error #2</h1>
+        <p class="zoom-area"><b>{{ message }}</b></p>
+        <section class="error-container">
+            <span class="four"><span class="screen-reader-text">4</span></span>
+            <span class="zero"><span class="screen-reader-text">0</span></span>
+            <span class="four"><span class="screen-reader-text">4</span></span>
+        </section>
+    </div>
+{% endblock %}
