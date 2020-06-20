@@ -139,8 +139,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'website/static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+with open(os.path.join(BASE_DIR, 'google-credentials.json'), 'wb') as file:
+    credentials = os.environ.get('GOOGLE_CREDENTIALS')
+    file.write(str.encode(credentials))
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, '/app/google-credentials.json')
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'google-credentials.json')
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'website/media'
 CACHE_DISCOVERY = False
 
