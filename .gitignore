@@ -6,4 +6,5 @@ db.sqlite3
 debug.log
 info.log
 #personal info
-website/media/*
+website/migrations/
+
