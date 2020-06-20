@@ -2,6 +2,8 @@
 .idea/
 .env
 venv/
+website/media
+website/migrations
 db.sqlite3
 debug.log
 info.log

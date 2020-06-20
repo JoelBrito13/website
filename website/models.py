@@ -69,7 +69,7 @@ class About(models.Model):
     name = models.CharField(max_length=50, null=False)
     surname = models.CharField(max_length=50, null=False)
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
     linkedin = models.CharField(max_length=100, validators=[URLValidator])
     github = models.CharField(max_length=150, validators=[URLValidator])
     email = models.CharField(max_length=100, validators=[EmailValidator])
@@ -96,7 +96,7 @@ class SkillCategory(models.Model):
 
 class Skill(Base):
     percentage = models.IntegerField(null=False, validators=[MaxValueValidator(100), MinValueValidator(0)])
-    category = models.ForeignKey(SkillCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(to=SkillCategory, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['category', 'order']
