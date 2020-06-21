@@ -14,7 +14,7 @@
             <div class="row">
                 {% for experience in experiences %}
                     <div class="col-md-6 col-sm-6 portfolio-item">
-                            {% if project.image %}
+                            {% if experience.image %}
                                 <img class="img-fluid" src="{{ experience.image.url }}" alt="">
                             {% else %}
                                 <img class="img-fluid" src="{% static 'img/samuel-pereira-unsplash.jpg' %}"
