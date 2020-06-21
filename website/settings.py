@@ -91,17 +91,13 @@ DB_NAME = os.getenv('DB_NAME')
 DB_PASSWORD = os.getenv('DB_PASS')
 DB_USER = os.getenv('DB_USER')
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -139,6 +135,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'website/static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+# For local use, comment the following lines
+
 with open(os.path.join(BASE_DIR, 'google-credentials.json'), 'wb') as file:
     credentials = os.environ.get('GOOGLE_CREDENTIALS')
     file.write(str.encode(credentials))
@@ -147,8 +146,10 @@ GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'google-credentials.
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'website/media'
 CACHE_DISCOVERY = False
 
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'website/media')
+# For local use, uncomment the following lines
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'website/media')
 
 
 # Configure Django App for Heroku.
