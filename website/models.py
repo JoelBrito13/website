@@ -69,7 +69,7 @@ class About(models.Model):
     name = models.CharField(max_length=50, null=False)
     surname = models.CharField(max_length=50, null=False)
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=500)
+    description = models.TextField(max_length=1000)
     linkedin = models.CharField(max_length=100, validators=[URLValidator])
     github = models.CharField(max_length=150, validators=[URLValidator])
     email = models.CharField(max_length=100, validators=[EmailValidator])
@@ -111,14 +111,14 @@ class Education(DateBaseMonthYear):
 
 class Project(DateBaseMonthYear):
     sub_title = models.CharField(max_length=200)
-    description = models.CharField(max_length=1000)
+    description = models.TextField(max_length=1000)
     image = models.ImageField(upload_to='projects', blank=True, null=True, storage=gd_storage)
     link = models.CharField(max_length=150, validators=[URLValidator], blank=True, null=True)
 
 
 class Experience(DateBaseMonthYear):
     sub_title = models.CharField(max_length=200)
-    description = models.CharField(max_length=1000)
+    description = models.TextField(max_length=1000)
     image = models.ImageField(upload_to='events', blank=True, null=True, storage=gd_storage)
 
 
