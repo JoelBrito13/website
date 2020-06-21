@@ -1,4 +1,4 @@
-# Smart Room
+# Personal Portfolio
 
 A dynamic Django template for personal Portfolios. Its is build to contain the The **Skills**, **Experiences**, **Projects**, **Education**, **Certificates** along with other pertinent informations. 
 
