@@ -20,7 +20,7 @@ class Base(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return f'{self.id} - {self.title}'
+        return f'{self.order} - {self.title}'
 
 
 class DateBaseMonthYear(models.Model):
@@ -33,7 +33,7 @@ class DateBaseMonthYear(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return f'{self.id} - {self.title}'
+        return f'{self.order} - {self.title}'
 
     @property
     def begin_date_month_year(self):
@@ -53,7 +53,7 @@ class DateBase(models.Model):
         ordering = ['order', ]
 
     def __str__(self):
-        return f'{self.id} - {self.title}'
+        return f'{self.order} - {self.title}'
 
     @property
     def date_month_year(self):
