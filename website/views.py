@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import logging
 
 from website.models import About, Experience, Education, Skill, Certification, Dossier, CV, Project, Award, \
-    SkillCategory
+    SkillCategory, SkillSession
 
 logging.config.dictConfig({
     'version': 1,
@@ -91,16 +91,20 @@ def education_view(request):
 def skill_view(request):
     skills = Skill.objects.all()
     skill_categories = SkillCategory.objects.all()
-    categories = {}
+    session_skill = SkillSession.objects.all()
+
+    session_skills = {}
+    for session in session_skill:
+        session_skills[session.name] = {}
     for category in skill_categories:
-        categories[category.name] = []
+        session_skills[category.session.name].update({category.name: []})
     for item in skills:
-        categories[item.category.name].append(item)
+        session_skills[item.category.session.name][item.category.name].append(item)
     tparms = {
 
-        'categories': categories
+        'session_skills': session_skills
     }
-    logger.info(categories)
+    logger.info(session_skills)
     return render(request, 'html/pages/skills.html', tparms)
 
 

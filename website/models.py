@@ -83,7 +83,7 @@ class CV(models.Model):
         return self.curriculum.url.replace("download", "sharing")
 
 
-class SkillCategory(models.Model):
+class SkillSession(models.Model):
     name = models.CharField(max_length=50, unique=True)
     order = models.IntegerField()
 
@@ -94,12 +94,27 @@ class SkillCategory(models.Model):
         return f'{self.order} - {self.name}'
 
 
+class SkillCategory(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    order = models.IntegerField()
+    session = models.ForeignKey(to=SkillSession, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['session', 'order', ]
+
+    def __str__(self):
+        return f'[{self.session}] {self.order} - {self.name}'
+
+
 class Skill(Base):
     percentage = models.IntegerField(null=False, validators=[MaxValueValidator(100), MinValueValidator(0)])
     category = models.ForeignKey(to=SkillCategory, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['category', 'order']
+
+    def __str__(self):
+        return f'[{self.category}] {self.order} - {self.title}'
 
 
 class Education(DateBaseMonthYear):

@@ -19,7 +19,7 @@
     -moz-transition: all ease 0.5s;
     transition: all ease 0.5s;
     opacity: 0;
-    background: #BD5D38;
+    background: #104E8B;
 }
 
 #projects .portfolio-item .portfolio-link .portfolio-hover:hover {
@@ -183,4 +183,33 @@ iframe {
 
 .wrap-space {
     white-space: pre-wrap;
+}
+
+.text-index-nav{
+    font-size: 17px;
+}
+
+
+.progress-bar-div {
+    width: 400px;
+    position: relative;
+    margin: 0 auto;
+    line-height: 1.4em;
+}
+
+
+.education-image {
+    width: 100%;
+    max-width: 300px;
+    height: 180px;
+    float: left;
+    margin-right: 10px;
+}
+
+.ul-skill{
+    margin-bottom: 90px;
+}
+
+.p-about {
+  color: #104E8B;
 }

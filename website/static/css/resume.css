@@ -1,7 +1,7 @@
 body {
     font-family: 'Open Sans', serif;
     padding-top: 54px;
-    color: #868e96;
+    color: #000000;
 }
 
 @media (min-width: 992px) {
@@ -43,9 +43,6 @@ h2 {
     color: #495057;
 }
 
-.list-social-icons a:hover {
-    color: #BD5D38;
-}
 
 .list-social-icons a .fa-lg {
     font-size: 1.75rem;
@@ -55,9 +52,7 @@ h2 {
     font-size: 3rem;
 }
 
-.list-icons .list-inline-item i:hover {
-    color: #BD5D38;
-}
+
 
 #sideNav .navbar-nav .nav-item .nav-link {
     font-weight: 600;
@@ -117,7 +112,7 @@ section.resume-section {
 }
 
 section.resume-section .resume-item .resume-date {
-    min-width: none;
+    min-width: auto;
 }
 
 @media (min-width: 768px) {
@@ -138,33 +133,23 @@ section.resume-section .resume-item .resume-date {
 }
 
 .bg-primary {
-    background-color: #BD5D38 !important;
+    background-color: #104E8B !important;
 }
 
 .text-primary {
-    color: #BD5D38 !important;
+    color: #000000 !important;
 }
 
 a {
-    color: #BD5D38;
+    color: #1b1e21;
 }
 
 a:hover, a:focus, a:active {
-    color: #824027;
+    color: #104E8B;
 }
 
-.progress-bar-div {
-    width: 400px;
-    position: relative;
-    margin: 0 auto;
-    line-height: 1.4em;
-}
-
-
-.education-image {
-    width: 100%;
-    max-width: 300px;
-    height: 180px;
-    float: left;
-    margin-right: 10px;
+hr {
+    border-style: dot-dash;
+    color: #104E8B;
+    border-width: 3px;
 }

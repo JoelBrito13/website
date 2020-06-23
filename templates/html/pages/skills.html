@@ -15,18 +15,26 @@
                     <h2 class="mb-5">Skills</h2>
                 </div>
             </div>
-            <div class="container-bar">
-                <ul>
-                    {% for category, skills in categories.items %}
-                        <h3 class="mb-5">{{ category }}</h3>
-                        {% for skill in skills %}
-                            <li class="li-bar animated"
-                                style="--my-percentage-var: {{ skill.percentage }}%"> {{ skill.title }}
-                            </li>
-                        {% endfor %}
+            {% for session, categories in session_skills.items %}
+                <h3>{{ session }}</h3>
+                <hr>
+                <div class="container-bar">
+                    {% for categoty, skills in categories.items %}
+                        <ul class="ul-skill">
+                            {% if categoty != session %}
+                                <h4>{{ categoty }}</h4>
+                            {% endif %}
+                            {% for skill in skills %}
+                                <li class="li-bar animated"
+                                    style="--my-percentage-var: {{ skill.percentage }}%"> {{ skill.title }}
+                                </li>
+                            {% endfor %}
+                        </ul>
                     {% endfor %}
-                </ul>
-            </div>
+                </div>
+                <br>
+            {% endfor %}
+
         </div>
     </section>
 
