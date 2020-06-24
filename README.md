@@ -35,11 +35,6 @@ The used items for this project are located in __/website/static/__, however the
 * SECRET_KEY 
 * DEBUG 
 * ALLOWED_HOSTS 
-* DB_HOST 
-* DB_PORT 
-* DB_NAME 
-* DB_PASS 
-* DB_USER  
 * DEBUG_COLLECTSTATIC
 * DJANGO_STATIC_HOST
 * GOOGLE_CREDENTIALS
