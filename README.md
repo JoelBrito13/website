@@ -10,22 +10,6 @@ For local use, you can change the media roots to local and the DataBase to sqlli
 
 To update the data, it was used the Django admin for all the advantages this resource brings.
 
-## Templates and Images Used:
-
-* [Website Base Template](https://github.com/user-cube/aboutMePT)
-* [404 page](https://codepen.io/andrew-lawendy/pen/deOpMZ)
-* [500 page](https://codepen.io/dariocorsi/pen/YOeYrJ)
-* [No Content Page](https://codepen.io/ricardpriet/pen/qVZxNo)
-* [css bar animation](https://www.youtube.com/watch?v=JkhhzfkXFSA)
-
-* [Google storage](https://django-storages.readthedocs.io/en/latest/backends/gcloud.html)
-* [Heroku Deployment](https://simpleisbetterthancomplex.com/tutorial/2016/08/09/how-to-deploy-django-applications-on-heroku.html)
-
-* [project default image](https://unsplash.com/photos/SYTO3xs06fU)
-* [education default image](https://unsplash.com/photos/2JIvboGLeho)
-* [Experience defaul image](https://unsplash.com/photos/uf2nnANWa8Q)
-
-
 ## Images
 
 The used image have a ratio of 16:9. For a better appearance, te ideal is prepare the images before upload them. Use the same ratio between all the images, at least, in the same ratio between images in the same page.
@@ -49,3 +33,20 @@ The used items for this project are located in __/website/static/__, however the
 * DEBUG_COLLECTSTATIC
 * DJANGO_STATIC_HOST
 * GOOGLE_CREDENTIALS
+* DB_HOST
+* DB_PORT
+* DB_NAME
+* DB_PASSWORD
+* DB_USER
+
+
+## Credits:
+
+* [Website Base Template](https://github.com/user-cube/aboutMePT)
+* [404 page](https://codepen.io/andrew-lawendy/pen/deOpMZ)
+* [500 page](https://codepen.io/dariocorsi/pen/YOeYrJ)
+* [No Content Page](https://codepen.io/ricardpriet/pen/qVZxNo)
+* [css bar animation](https://www.youtube.com/watch?v=JkhhzfkXFSA)
+
+* [Google storage](https://django-storages.readthedocs.io/en/latest/backends/gcloud.html)
+* [Heroku Deployment](https://simpleisbetterthancomplex.com/tutorial/2016/08/09/how-to-deploy-django-applications-on-heroku.html)

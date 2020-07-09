@@ -16,9 +16,6 @@
                     <div class="col-md-6 col-sm-6 portfolio-item">
                             {% if experience.image %}
                                 <img class="img-fluid" src="{{ experience.image.url }}" alt="">
-                            {% else %}
-                                <img class="img-fluid" src="{% static 'img/samuel-pereira-unsplash.jpg' %}"
-                                     alt="">
                             {% endif %}
                             <div class="portfolio-caption">
                                 <h3 class="mb-0">{{ experience.title }}</h3>
