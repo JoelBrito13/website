@@ -29,7 +29,7 @@ DEBUG = os.getenv('DEBUG') == 'True'
 # SECURITY WARNING: don't run with debug turned on in production!
 if DEBUG:
     # When not specified, ALLOW_HOSTS defaults to:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '192.168.1.*']
 else:
     ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
@@ -94,8 +94,12 @@ DB_USER = os.getenv('DB_USER')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 # Password validation
